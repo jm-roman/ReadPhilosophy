@@ -1,3 +1,58 @@
 * {
   border: solid red;
 }
+
+#top {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 5px;
+}
+
+#reader {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 400px;
+
+  #prompt-box {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+    #prompt {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  #text-box {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+
+    #text {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+#bottom {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 5px;
+
+  #prev {
+    margin-right: 10px;
+  }
+
+  #next {
+    margin-right: 10px;
+  }
+}

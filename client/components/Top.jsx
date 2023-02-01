@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Top = () => {
-  return <div>The Top</div>;
+  return <div id='top'>Kant: GMM, Preface</div>;
 };
 
 export default Top;

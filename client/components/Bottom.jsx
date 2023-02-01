@@ -1,7 +1,12 @@
 import React from 'react';
 
 const Bottom = () => {
-  return <div>The Bottom</div>;
+  return (
+    <div id='bottom'>
+      <button id='prev'>Previous</button>
+      <button id='prev'>Next</button>
+    </div>
+  );
   // insert prev and next buttons
 };
 

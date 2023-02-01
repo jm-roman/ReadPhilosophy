@@ -1,0 +1,14 @@
+[
+  {
+    "promptNum": 1,
+    "prompt": "According to Kant, what are three divisions of ancient Greek philosophy? Does Kant think that this division is appropriate?"
+  },
+  {
+    "promptNum": 2,
+    "prompt": "What is the difference between material and formal philosophy? What kind of philosophy is ethics?"
+  },
+  {
+    "paraNum": 3,
+    "text": "Why can't logic have an empirical part? Why can physics and ethics have an empirical part?"
+  }
+]

@@ -1,7 +1,11 @@
 import React from 'react';
 
 const Text = () => {
-  return <div>The Text</div>;
+  return (
+    <div id='text-box'>
+      <div id='text'>Test text</div>
+    </div>
+  );
   // get text from groundwork json
   // build out div
 };

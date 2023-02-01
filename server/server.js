@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // handles requests for static files
-// app.use('/public', express.static(path.join(__dirname, '../public')));
+app.use('/public', express.static(path.join(__dirname, '../public')));
 
 app.get('/', (req, res) => {
   console.log('hello');
@@ -23,6 +23,10 @@ app.get('/', (req, res) => {
 
 // // define route handlers
 app.get('/text', fileController.getText, (req, res) => {
+  res.status(200).json(res.locals);
+});
+
+app.get('/prompts', fileController.getPrompts, (req, res) => {
   res.status(200).json(res.locals);
 });
 
