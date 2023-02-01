@@ -4,32 +4,35 @@ import Prompt from './Prompt';
 import Text from './Text';
 import Bottom from './Bottom';
 
-// function getInitialState() {
-//   return {
-//     answered: false,
-//     current: 1,
-//   };
-// }
-
 class App extends Component {
   constructor(props) {
-    super();
+    super(props);
+
+    this.state = {
+      answered: false,
+      currentPage: 0,
+      currentText: '',
+      currentPrompt: '',
+    };
+
+    this.addText = this.addText.bind(this);
+    this.addPrompt = this.addPrompt.bind(this);
   }
 
   componentDidMount() {
-    // fetch('http://localhost:3000/text/')
-    //   .then((res) => res.json())
-    //   .then((res) => this.addText(res.text))
-    //   .catch((err) =>
-    //     console.log('App.componentDidMount: get characters: ERROR: ', err)
-    //   );
-
-    fetch('http://localhost:3000/text', { mode: 'no-cors' })
+    fetch('http://localhost:3000/text')
       .then((res) => {
-        console.log(res);
-        res.json();
+        return res.json();
       })
       .then((res) => this.addText(res))
+      .catch((err) =>
+        console.log('App.componentDidMount: get text: ERROR: ', err)
+      );
+    fetch('http://localhost:3000/prompts')
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => this.addPrompt(res))
       .catch((err) =>
         console.log('App.componentDidMount: get text: ERROR: ', err)
       );
@@ -37,24 +40,35 @@ class App extends Component {
 
   addText(text) {
     // adding at the correct index (which is current - 1)
-    console.log(text);
+    const currentText = text[this.state.current - 1];
+    this.setState({ currentText });
+    // console.log(text);
   }
 
   addPrompt(prompts) {
     // adding at the correct index (which is current - 1)
-    console.log(prompts);
+    const currentPrompt = prompts[this.state.current - 1];
+    this.setState({ currentPrompt });
   }
 
   render() {
+    const pageProps = {
+      answered: this.state.answered,
+      currentPage: this.state.currentPage,
+      currentText: this.state.currentText,
+      currentPrompt: this.state.currentPrompt,
+    };
     return (
       <div>
-        <h1>Read Philosophy</h1>
+        <header>
+          <h1>Read Philosophy</h1>
+        </header>
         <Top />
         <div id='reader'>
-          <Prompt />
-          <Text />
+          <Prompt {...pageProps} />
+          <Text {...pageProps} />
         </div>
-        <Bottom />
+        <Bottom {...pageProps} />
       </div>
     );
   }

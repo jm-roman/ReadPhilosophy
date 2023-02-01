@@ -1,36 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import 'variables.scss';
+
 * {
-  border: solid red;
+  border: solid $lightOrange;
 }
 
-#top {
+header {
+}
+
+body {
+  font-family: 'Lora', serif;
+}
+
+#top-box {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 5px;
+  #top {
+    padding: 5px;
+  }
 }
 
 #reader {
   display: flex;
   justify-content: center;
   width: 100%;
-  min-height: 400px;
+  min-width: 600px;
 
   #prompt-box {
+    min-width: 300px;
     width: 50%;
-    height: 100%;
+    min-height: 300px;
     display: flex;
     align-items: center;
     padding: 5px;
 
     #prompt {
-      flex-direction: column;
+      min-width: 300px;
+      display: flex;
       justify-content: center;
+      font-weight: bold;
+    }
+
+    #answer {
+      min-width: 300px;
     }
   }
 
   #text-box {
     width: 50%;
-    height: 100%;
+    min-width: 300px;
+    min-height: 300px;
     display: flex;
     align-items: center;
     padding: 5px;
@@ -42,17 +62,23 @@
   }
 }
 
-#bottom {
+#bottom-box {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 5px;
+  border: solid blue;
 
-  #prev {
-    margin-right: 10px;
-  }
+  #bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    width: 200px;
+    #prev {
+      // margin-right: 10px;
+    }
 
-  #next {
-    margin-right: 10px;
+    #next {
+      // margin-right: 10px;
+    }
   }
 }

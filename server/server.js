@@ -1,9 +1,12 @@
 const path = require('path');
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const PORT = 3000;
 
 const fileController = require('./controllers/fileController');
+
+app.use(cors());
 
 app.listen(PORT, () => {
   console.log(`Success! Your application is running on port ${PORT}.`);
