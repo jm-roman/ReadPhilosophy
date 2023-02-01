@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Prompt = () => {
+const Prompt = (props) => {
   return (
     <div id='prompt-box'>
+      <div id='prompt'> {props.currentPrompt} </div>
       <form>
-        <div id='prompt'>Test prompt</div>
-        <input type='text' id='answer' name='answer' />
+        <input type='text' id='answer' name='answer' value='Answer here' />
       </form>
     </div>
   );

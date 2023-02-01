@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 @import 'variables.scss';
 
-* {
-  border: solid $lightOrange;
-}
+// * {
+//   border: solid $lightOrange;
+// }
 
 header {
+  display: flex;
+  justify-content: center;
 }
 
 body {
@@ -16,6 +18,7 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+  background-color: $lightOrange;
   #top {
     padding: 5px;
   }
@@ -26,38 +29,48 @@ body {
   justify-content: center;
   width: 100%;
   min-width: 600px;
+  height: 100%;
 
   #prompt-box {
     min-width: 300px;
     width: 50%;
-    min-height: 300px;
+    min-height: 400px;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 5px;
 
     #prompt {
       min-width: 300px;
       display: flex;
       justify-content: center;
-      font-weight: bold;
+      font-weight: bolder;
+      margin: 20px;
     }
 
     #answer {
       min-width: 300px;
+      display: flex;
+      justify-content: center;
     }
   }
 
   #text-box {
     width: 50%;
     min-width: 300px;
-    min-height: 300px;
+    min-height: 400px;
     display: flex;
+    justify-content: center;
+    flex-direction: column;
     align-items: center;
     padding: 5px;
 
     #text {
+      margin: 20px;
       display: flex;
       align-items: center;
+      font-weight: lighter;
     }
   }
 }
@@ -66,19 +79,20 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
-  border: solid blue;
+  background-color: $lightOrange;
 
   #bottom {
     display: flex;
     justify-content: space-between;
     padding: 5px;
     width: 200px;
+
     #prev {
       // margin-right: 10px;
     }
 
     #next {
-      // margin-right: 10px;
+      color: $primaryOrange;
     }
   }
 }

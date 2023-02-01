@@ -10,9 +10,10 @@ class App extends Component {
 
     this.state = {
       answered: false,
-      currentPage: 0,
+      currentPage: 1,
       currentText: '',
       currentPrompt: '',
+      lastPage: Infinity,
     };
 
     this.addText = this.addText.bind(this);
@@ -40,15 +41,32 @@ class App extends Component {
 
   addText(text) {
     // adding at the correct index (which is current - 1)
-    const currentText = text[this.state.current - 1];
-    this.setState({ currentText });
-    // console.log(text);
+    const currentText = text[this.state.currentPage - 1].text;
+    const lastPage = text.length;
+    this.setState({ currentText, lastPage });
   }
 
   addPrompt(prompts) {
     // adding at the correct index (which is current - 1)
-    const currentPrompt = prompts[this.state.current - 1];
+    const currentPrompt = prompts[this.state.currentPage - 1].prompt;
     this.setState({ currentPrompt });
+  }
+
+  nextPage() {
+    // changing current page on click
+    // check if answered or if there are further pages
+    if (answered && currentPage < lastPage) {
+      const currentPage = this.state.currentPage + 1;
+      this.setState({ currentPage });
+    }
+  }
+
+  prevPage() {
+    // changing current page on click
+    if (this.state.currentPage > 1) {
+      const currentPage = this.state.currentPage + 1;
+      this.setState({ currentPage });
+    }
   }
 
   render() {
@@ -65,8 +83,11 @@ class App extends Component {
         </header>
         <Top />
         <div id='reader'>
-          <Prompt {...pageProps} />
-          <Text {...pageProps} />
+          <Prompt currentPrompt={pageProps.currentPrompt} />
+          <Text
+            currentText={pageProps.currentText}
+            currentPage={pageProps.currentPage}
+          />
         </div>
         <Bottom {...pageProps} />
       </div>
