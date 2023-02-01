@@ -5,7 +5,7 @@ const fileController = {};
 
 fileController.getText = (req, res, next) => {
   try {
-    const { results } = JSON.parse(
+    const results = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, '../data/text.json'), 'UTF-8')
     );
     res.locals = results;
