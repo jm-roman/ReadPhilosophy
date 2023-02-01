@@ -1,1 +1,1 @@
-# solo-project
+# Read Philosophy
