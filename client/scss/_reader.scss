@@ -8,10 +8,17 @@
 header {
   display: flex;
   justify-content: center;
+  background-color: $lightestOrange;
 }
 
 body {
   font-family: 'Lora', serif;
+}
+
+button {
+  font-family: 'Lora', serif;
+  border: solid $lightestOrange 1px;
+  height: 30px;
 }
 
 #top-box {
@@ -30,6 +37,7 @@ body {
   width: 100%;
   min-width: 600px;
   height: 100%;
+  background-color: $lightestOrange;
 
   #prompt-box {
     min-width: 300px;
@@ -47,10 +55,12 @@ body {
       justify-content: center;
       font-weight: bolder;
       margin: 20px;
+      margin-bottom: 40px;
     }
 
     #answer {
       min-width: 300px;
+      width: 1rem;
       display: flex;
       justify-content: center;
     }
@@ -79,20 +89,23 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
-  background-color: $lightOrange;
+  height: 40px;
+  background-color: lighten($lightOrange, 5%);
 
   #bottom {
     display: flex;
     justify-content: space-between;
     padding: 5px;
-    width: 200px;
+    width: 400px;
 
     #prev {
-      // margin-right: 10px;
+      width: 100px;
+      background-color: $lightestOrange;
     }
 
     #next {
-      color: $primaryOrange;
+      width: 100px;
+      background-color: lighten($primaryOrange, 30%);
     }
   }
 }

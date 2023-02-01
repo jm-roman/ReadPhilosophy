@@ -1,15 +1,18 @@
 import React from 'react';
 
-const Bottom = () => {
+const Bottom = (props) => {
   return (
     <div id='bottom-box'>
       <div id='bottom'>
-        <button id='prev'>Previous</button>
-        <button id='prev'>Next</button>
+        <button id='prev' onClick={props.prevPage}>
+          Previous
+        </button>
+        <button id='next' onClick={props.nextPage}>
+          Next
+        </button>
       </div>
     </div>
   );
-  // insert prev and next buttons
 };
 
 export default Bottom;

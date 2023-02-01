@@ -11,6 +11,7 @@ const Text = (props) => {
   );
   // get text from groundwork json
   // build out div
+  // switch language button (must include language in JSON)
 };
 
 export default Text;
