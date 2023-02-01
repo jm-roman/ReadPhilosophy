@@ -16,15 +16,15 @@ class App extends Component {
     super();
   }
 
-  // componentDidMount() {
-  //   fetch('/data/text')
-  //     .then((res) => res.json())
-  //     .then((res) => this.addText(res.text))
-  //     .then((res) => this.addPrompt(res.prompt))
-  //     .catch((err) =>
-  //       console.log('App.componentDidMount: get characters: ERROR: ', err)
-  //     );
-  // }
+  componentDidMount() {
+    fetch('/text')
+      .then((res) => res.json())
+      .then((res) => this.addText(res.text))
+      .then((res) => this.addPrompt(res.prompt))
+      .catch((err) =>
+        console.log('App.componentDidMount: get characters: ERROR: ', err)
+      );
+  }
 
   // addPrompt() {}
 
