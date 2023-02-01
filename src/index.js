@@ -1,5 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Home from './components/Home';
+import { render } from 'react-dom';
+import App from './components/App';
 
-ReactDOM.render(<Home />, document.getElementById('app'));
+import styles from './scss/application.scss';
+
+render(<App />, document.getElementById('app'));

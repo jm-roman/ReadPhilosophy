@@ -1,0 +1,14 @@
+[
+  {
+    "para": 1,
+    "text": "Ancient Greek philosophy was divided into three sciences: physics, ethics, and logic. This division is perfectly suitable to the nature of the thing; and the only improvement that can be made in it is to add the principle on which it is based, so that we may both satisfy ourselves of its completeness, and also be able to determine correctly the necessary subdivisions."
+  },
+  {
+    "para": 2,
+    "text": "All rational knowledge is either material or formal: the former considers some object, the latter is concerned only with the form of the understanding and of the reason itself, and with the universal laws of thought in general without distinction of its objects. Formal philosophy is called logic. Material philosophy, however, has to do with determinate objects and the laws to which they are subject, is again twofold; for these laws are either laws of nature or of freedom. The science of the former is physics, that of the latter, ethics; they are also called natural philosophy and moral philosophy respectively."
+  },
+  {
+    "para": 3,
+    "text": "Logic cannot have any empirical part; that is, a part in which the universal and necessary laws of thought should rest on grounds taken from experience; otherwise it would not be logic, i.e., a canon for the understanding or the reason, valid for all thought, and capable of demonstration. Natural and moral philosophy, on the contrary, can each have their empirical part, since the former has to determine the laws of nature as an object of experience; the latter the laws of the human will, so far as it is affected by nature: the former, however, being laws according to which everything does happen; the latter, laws according to which everything ought to happen. Ethics, however, must also consider the conditions under which what ought to happen frequently does not."
+  }
+]
