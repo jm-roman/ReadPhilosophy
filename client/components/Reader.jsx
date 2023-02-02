@@ -27,25 +27,19 @@ class Reader extends Component {
     this.getPage();
   }
 
-  currentPageCheck() {}
-
   getPage() {
     fetch('http://localhost:3000/text')
       .then((res) => {
         return res.json();
       })
       .then((res) => this.addText(res))
-      .catch((err) =>
-        console.log('App.componentDidMount: get text: ERROR: ', err)
-      );
+      .catch((err) => console.log('Reader getPage ERROR: ', err));
     fetch('http://localhost:3000/prompts')
       .then((res) => {
         return res.json();
       })
       .then((res) => this.addPrompt(res))
-      .catch((err) =>
-        console.log('App.componentDidMount: get text: ERROR: ', err)
-      );
+      .catch((err) => console.log('Reader getPage ERROR: ', err));
   }
 
   addText(text) {
@@ -86,7 +80,7 @@ class Reader extends Component {
       this.setState({ currentPage });
       this.getPage();
     } else if (this.state.currentPage <= 1) {
-      // this.goHome();
+      // <Link to></Link>;
     }
   }
 
@@ -102,8 +96,6 @@ class Reader extends Component {
     // write answer to answers json in local database
   }
 
-  goToNotes() {}
-
   render() {
     const pageProps = {
       answered: this.state.answered,
@@ -111,12 +103,15 @@ class Reader extends Component {
       currentText: this.state.currentText,
       currentOriginal: this.state.currentOriginal,
       currentPrompt: this.state.currentPrompt,
+      lastPage: this.state.lastPage,
     };
 
     return (
       <div>
         <header>
-          <h1>Read Philosophy</h1>
+          <h1>
+            <a href='/'>Read Philosophy</a>
+          </h1>
         </header>
         <Top />
         <div id='reader'>
@@ -131,6 +126,7 @@ class Reader extends Component {
           nextPage={this.nextPage}
           prevPage={this.prevPage}
           currentPage={pageProps.currentPage}
+          lastPage={pageProps.lastPage}
         />
       </div>
     );

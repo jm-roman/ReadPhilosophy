@@ -8,7 +8,7 @@ fileController.getText = (req, res, next) => {
     const results = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, '../data/text.json'), 'UTF-8')
     );
-    res.locals = results;
+    res.locals.text = results;
     next();
   } catch (e) {
     console.log('fileController.getText: ERROR: ', e);
@@ -23,7 +23,22 @@ fileController.getPrompts = (req, res, next) => {
     const results = JSON.parse(
       fs.readFileSync(path.resolve(__dirname, '../data/prompts.json'), 'UTF-8')
     );
-    res.locals = results;
+    res.locals.prompts = results;
+    next();
+  } catch (e) {
+    console.log('fileController.getText: ERROR: ', e);
+    res.status(400).send({
+      err: 'Error occurred in fileController.getPrompts. Check server logs for more details.',
+    });
+  }
+};
+
+fileController.getNotes = (req, res, next) => {
+  try {
+    const results = JSON.parse(
+      fs.readFileSync(path.resolve(__dirname, '../data/notes.json'), 'UTF-8')
+    );
+    res.locals.notes = results;
     next();
   } catch (e) {
     console.log('fileController.getText: ERROR: ', e);

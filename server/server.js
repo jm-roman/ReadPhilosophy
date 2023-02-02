@@ -26,11 +26,15 @@ app.get('/', (req, res) => {
 
 // // define route handlers
 app.get('/text', fileController.getText, (req, res) => {
-  res.status(200).json(res.locals);
+  res.status(200).json(res.locals.text);
 });
 
 app.get('/prompts', fileController.getPrompts, (req, res) => {
-  res.status(200).json(res.locals);
+  res.status(200).json(res.locals.prompts);
+});
+
+app.get('/notes', fileController.getNotes, (req, res) => {
+  res.status(200).json(res.locals.notes);
 });
 
 app.post('/notes', fileController.getPrompts, (req, res) => {

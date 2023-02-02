@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import 'variables.scss';
+
+#note-box {
+  display: flex;
+  justify-content: center;
+}
+
+#back-to-reader {
+  margin-top: 40px;
+  width: 150px;
+  background-color: $lightOrange;
+}
