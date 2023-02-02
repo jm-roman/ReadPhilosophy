@@ -3,11 +3,12 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const PORT = 3000;
-
 const fileController = require('./controllers/fileController');
 
+// needed to fix fetching problem in react
 app.use(cors());
 
+// listens, confirms connection
 app.listen(PORT, () => {
   console.log(`Success! Your application is running on port ${PORT}.`);
 });
@@ -20,7 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/public', express.static(path.join(__dirname, '../public')));
 
 app.get('/', (req, res) => {
-  console.log('hello');
   return res.status(200).sendFile(path.join(__dirname, '../index.html'));
 });
 
@@ -30,6 +30,10 @@ app.get('/text', fileController.getText, (req, res) => {
 });
 
 app.get('/prompts', fileController.getPrompts, (req, res) => {
+  res.status(200).json(res.locals);
+});
+
+app.post('/notes', fileController.getPrompts, (req, res) => {
   res.status(200).json(res.locals);
 });
 

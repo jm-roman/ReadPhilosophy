@@ -21,6 +21,10 @@ button {
   height: 30px;
 }
 
+#home-title {
+  font-size: 60px;
+}
+
 #top-box {
   display: flex;
   justify-content: center;
@@ -28,6 +32,7 @@ button {
   background-color: $lightOrange;
   #top {
     padding: 5px;
+    font-weight: bolder;
   }
 }
 
@@ -54,15 +59,30 @@ button {
       display: flex;
       justify-content: center;
       font-weight: bolder;
+      text-align: center;
       margin: 20px;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
-    #answer {
-      min-width: 300px;
-      width: 1rem;
+    #note-form {
+      width: 100%;
       display: flex;
       justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      #answer {
+        height: 20px;
+        width: 80%;
+        min-width: 300px;
+        display: flex;
+        justify-content: center;
+        border: solid $primaryOrange;
+      }
+
+      #submit {
+        margin-top: 20px;
+      }
     }
   }
 

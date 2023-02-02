@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
-import App from './components/App';
+import Reader from './components/Reader';
 
 import styles from './scss/application.scss';
 
-render(<App />, document.getElementById('app'));
+render(<Reader />, document.getElementById('app'));

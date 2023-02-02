@@ -4,8 +4,11 @@ const Prompt = (props) => {
   return (
     <div id='prompt-box'>
       <div id='prompt'> {props.currentPrompt} </div>
-      <form>
+      <form id='note-form'>
         <input type='text' id='answer' name='answer' />
+        <button type='submit' id='submit' name='Save'>
+          Save Answer
+        </button>
       </form>
     </div>
   );
