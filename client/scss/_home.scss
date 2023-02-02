@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import 'variables.scss';
+
+#home-title {
+  font-size: 100px;
+}
+
+#home-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#start-learning {
+  margin-top: 40px;
+  width: 150px;
+  background-color: $lightOrange;
+}

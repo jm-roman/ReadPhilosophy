@@ -5,6 +5,11 @@
 //   border: solid $lightOrange;
 // }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
 header {
   display: flex;
   justify-content: center;
@@ -13,12 +18,15 @@ header {
 
 body {
   font-family: 'Lora', serif;
+  background-color: $lightestOrange;
 }
 
 button {
   font-family: 'Lora', serif;
   border: solid $lightestOrange 1px;
   height: 30px;
+  width: 100px;
+  border-radius: 2px;
 }
 
 #home-title {
@@ -77,7 +85,8 @@ button {
         min-width: 300px;
         display: flex;
         justify-content: center;
-        border: solid $primaryOrange;
+        border: solid 2px $primaryOrange;
+        border-radius: 2px;
       }
 
       #submit {
@@ -119,12 +128,10 @@ button {
     width: 400px;
 
     #prev {
-      width: 100px;
       background-color: $lightestOrange;
     }
 
     #next {
-      width: 100px;
       background-color: lighten($primaryOrange, 30%);
     }
   }

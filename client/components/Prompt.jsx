@@ -6,7 +6,7 @@ const Prompt = (props) => {
       <div id='prompt'> {props.currentPrompt} </div>
       <form id='note-form'>
         <input type='text' id='answer' name='answer' />
-        <button type='submit' id='submit' name='Save'>
+        <button type='button' id='submit' name='Save'>
           Save Answer
         </button>
       </form>

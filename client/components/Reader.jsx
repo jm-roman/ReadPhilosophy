@@ -24,6 +24,12 @@ class Reader extends Component {
   }
 
   componentDidMount() {
+    this.getPage();
+  }
+
+  currentPageCheck() {}
+
+  getPage() {
     fetch('http://localhost:3000/text')
       .then((res) => {
         return res.json();
@@ -50,23 +56,25 @@ class Reader extends Component {
     this.setState({ currentText, currentOriginal, lastPage });
   }
 
+  readOriginal() {
+    // stretch feature to switch to original language
+  }
+
   addPrompt(prompts) {
     // adding at the correct index (which is current - 1)
     const currentPrompt = prompts[this.state.currentPage - 1].prompt;
     this.setState({ currentPrompt });
   }
 
-  readOriginal() {
-    // stretch feature to switch to original language
-  }
-
   nextPage() {
     // changing current page on click
     // check if answered or if there are further pages
-    console.log('next page plz');
     if (this.state.currentPage < this.state.lastPage) {
       const currentPage = this.state.currentPage + 1;
       this.setState({ currentPage });
+      this.getPage();
+    } else if (this.currentPage >= this.state.lastPage) {
+      // this.goToNotes();
     }
   }
 
@@ -76,15 +84,15 @@ class Reader extends Component {
     if (this.state.currentPage > 1) {
       const currentPage = this.state.currentPage - 1;
       this.setState({ currentPage });
+      this.getPage();
+    } else if (this.state.currentPage <= 1) {
+      // this.goHome();
     }
   }
 
   saveNote() {
     fetch('http://localhost:3000/notes', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'Application/JSON',
-      },
       body: JSON.stringify(body),
     })
       .then((resp) => resp.json())
@@ -93,6 +101,8 @@ class Reader extends Component {
       });
     // write answer to answers json in local database
   }
+
+  goToNotes() {}
 
   render() {
     const pageProps = {
@@ -117,7 +127,11 @@ class Reader extends Component {
             currentOriginal={pageProps.currentOriginal}
           />
         </div>
-        <Bottom nextPage={this.nextPage} prevPage={this.prevPage} />
+        <Bottom
+          nextPage={this.nextPage}
+          prevPage={this.prevPage}
+          currentPage={pageProps.currentPage}
+        />
       </div>
     );
   }
