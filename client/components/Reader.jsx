@@ -33,13 +33,13 @@ class Reader extends Component {
         return res.json();
       })
       .then((res) => this.addText(res))
-      .catch((err) => console.log('Reader getPage ERROR: ', err));
+      .catch((err) => console.log('Reader getPage on text ERROR: ', err));
     fetch('http://localhost:3000/prompts')
       .then((res) => {
         return res.json();
       })
       .then((res) => this.addPrompt(res))
-      .catch((err) => console.log('Reader getPage ERROR: ', err));
+      .catch((err) => console.log('Reader getPage on prompts ERROR: ', err));
   }
 
   addText(text) {
@@ -50,16 +50,15 @@ class Reader extends Component {
     this.setState({ currentText, currentOriginal, lastPage });
   }
 
-  readOriginal() {
-    // stretch feature to switch to original language
-  }
-
   addPrompt(prompts) {
     // adding at the correct index (which is current - 1)
     const currentPrompt = prompts[this.state.currentPage - 1].prompt;
     this.setState({ currentPrompt });
   }
 
+  readOriginal() {
+    // stretch feature to switch to original language
+  }
   nextPage() {
     // changing current page on click
     // check if answered or if there are further pages

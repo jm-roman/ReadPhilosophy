@@ -33,12 +33,12 @@ button {
   font-size: 60px;
 }
 
-#top-box {
+.top-box {
   display: flex;
   justify-content: center;
   width: 100%;
   background-color: $lightOrange;
-  #top {
+  .top {
     padding: 5px;
     font-weight: bolder;
   }

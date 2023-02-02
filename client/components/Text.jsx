@@ -4,7 +4,7 @@ const Text = (props) => {
   return (
     <div id='text-box'>
       <div id='para-num'>
-        <b>§{props.currentPage}</b>
+        <b>§{props.currentPage}.</b>
       </div>
       <div id='text'>{props.currentText}</div>
     </div>

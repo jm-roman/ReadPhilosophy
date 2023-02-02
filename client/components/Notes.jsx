@@ -10,6 +10,7 @@ class Notes extends Component {
       allNotes: [],
       allPrompts: [],
     };
+
     this.getNotes = this.getNotes.bind(this);
     this.addNotes = this.addNotes.bind(this);
   }
@@ -24,20 +25,17 @@ class Notes extends Component {
         return res.json();
       })
       .then((res) => this.addNotes(res))
-      .catch((err) =>
-        console.log('App.componentDidMount: get Notes: ERROR: ', err)
-      );
+      .catch((err) => console.log('Notes getNotes on notes ERROR: ', err));
     fetch('http://localhost:3000/prompts')
       .then((res) => {
         return res.json();
       })
-      .then((res) => this.addPrompt(res))
-      .catch((err) => console.log('getPage ERROR: ', err));
+      .then((res) => this.addPrompts(res))
+      .catch((err) => console.log('Notes getNotes on prompts ERROR: ', err));
   }
 
   addNotes(notes) {
     const allNotes = notes;
-    console.log('this is currentNotes', allNotes);
     this.setState({ allNotes });
   }
 
@@ -47,19 +45,31 @@ class Notes extends Component {
   }
 
   render() {
-    const noteProps = {};
-    const notesArray = this.state.currentNotes;
-    for (const note of notesArray) {
-      console.log(note.note);
-      notesArray.push(<Note />);
+    const allNotes = this.state.allNotes;
+    const allPrompts = this.state.allPrompts;
+    const notesArray = [];
+
+    if (allPrompts.length > 0 && allNotes.length > 0) {
+      for (let i = 0; i < allPrompts.length; i++) {
+        notesArray.push(
+          <Note
+            prompt={allPrompts[i].prompt}
+            promptNum={allPrompts[i].promptNum}
+            note={allNotes[i].note}
+            key={i}
+            id={i}
+          />
+        );
+      }
     }
+
     return (
       <>
         <header>
           <h1 id='notes-title'>Notes</h1>
         </header>
-        <div id='note-box'>
-          {notesArray}
+        <div id='note-box'>{notesArray}</div>
+        <div id='button-box'>
           <button id='back-to-reader'>
             <a href='/reader'>Back to Reader</a>
           </button>

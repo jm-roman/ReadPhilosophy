@@ -1,10 +1,14 @@
 import React from 'react';
 
 const Note = (props) => {
+  console.log(props);
   return (
-    <div id={'note-' + note.noteNum}>
-      <div>§{note.noteNum}</div>
-      <div></div>
+    <div id={'note-' + props.id} className='note'>
+      <div className='note-number'>
+        <b>§{props.promptNum}.</b>
+      </div>
+      <div className='note-prompt'>{props.prompt}</div>
+      <div className='note-note'>{props.note}</div>
     </div>
   );
 };

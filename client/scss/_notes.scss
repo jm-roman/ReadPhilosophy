@@ -4,10 +4,46 @@
 #note-box {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .note {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+
+    .note-section {
+      padding: 10px;
+    }
+
+    .note-note {
+      padding: 10px;
+      font-weight: lighter;
+    }
+
+    .note-prompt {
+      font-weight: bolder;
+      padding: 10px;
+    }
+  }
 }
 
-#back-to-reader {
-  margin-top: 40px;
-  width: 150px;
-  background-color: $lightOrange;
+.notes-top-box {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+#button-box {
+  display: flex;
+  justify-content: center;
+
+  #back-to-reader {
+    margin-top: 40px;
+    width: 150px;
+    background-color: $lightOrange;
+  }
 }
