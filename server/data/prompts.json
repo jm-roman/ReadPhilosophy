@@ -1,14 +1,14 @@
 [
   {
     "promptNum": 1,
-    "prompt": "What are three divisions of ancient Greek philosophy?"
+    "prompt": "What are the three divisions of ancient Greek philosophy?"
   },
   {
     "promptNum": 2,
-    "prompt": "What kind of philosophy is ethics?"
+    "prompt": "What is ethics?"
   },
   {
-    "paraNum": 3,
-    "prompt": "Why can't logic have an empirical part?"
+    "promptNum": 3,
+    "prompt": "How is ethics different from physics?"
   }
 ]
