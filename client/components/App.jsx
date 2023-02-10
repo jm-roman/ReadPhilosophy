@@ -1,9 +1,11 @@
 /// routes from Home, Reader, Notes
-import React, { Component } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import Reader from './Reader';
 import Notes from './Notes';
+
+// refactor with Hooks, Material UI
 
 const App = () => {
   return (
