@@ -1,6 +1,8 @@
 import React from 'react';
 
 const Prompt = (props) => {
+  // creat note function
+
   return (
     <div id='prompt-box'>
       <div id='prompt'> {props.currentPrompt} </div>

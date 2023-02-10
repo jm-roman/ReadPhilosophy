@@ -83,7 +83,11 @@ class Reader extends Component {
     }
   }
 
-  saveNote() {
+  saveNote(input) {
+    
+
+
+
     fetch('http://localhost:3000/notes', {
       method: 'POST',
       body: JSON.stringify(body),
@@ -92,8 +96,9 @@ class Reader extends Component {
       .then((data) => {
         console.log(data);
       });
-    // write answer to answers json in local database
-  }
+  };
+
+ 
 
   render() {
     const pageProps = {
