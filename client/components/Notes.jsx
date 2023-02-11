@@ -44,8 +44,6 @@ class Notes extends Component {
     this.setState({ allPrompts });
   }
 
-
-
   render() {
     const allNotes = this.state.allNotes;
     const allPrompts = this.state.allPrompts;
