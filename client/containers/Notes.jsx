@@ -1,6 +1,6 @@
 // loop through notes and populate notes page
 import React, { Component } from 'react';
-import Note from './Note';
+import Note from '../components/Note';
 
 class Notes extends Component {
   constructor(props) {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Top from './Top';
-import Prompt from './Prompt';
-import Text from './Text';
-import Bottom from './Bottom';
+import Top from '../components/Top';
+import Prompt from '../components/Prompt';
+import Text from '../components/Text';
+import Bottom from '../components/Bottom';
 
 class Reader extends Component {
   constructor(props) {
@@ -84,10 +84,6 @@ class Reader extends Component {
   }
 
   saveNote(input) {
-    
-
-
-
     fetch('http://localhost:3000/notes', {
       method: 'POST',
       body: JSON.stringify(body),
@@ -96,9 +92,7 @@ class Reader extends Component {
       .then((data) => {
         console.log(data);
       });
-  };
-
- 
+  }
 
   render() {
     const pageProps = {
