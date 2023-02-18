@@ -1,82 +1,54 @@
 // loop through notes and populate notes page
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Note from '../components/Note';
 
-class Notes extends Component {
-  constructor(props) {
-    super(props);
+const Notes = () => {
+  const [notes, setNotes] = useState([]);
+  const [prompts, setPrompts] = useState([]);
 
-    this.state = {
-      allNotes: [],
-      allPrompts: [],
-    };
+  const getNotes = async () => {
+    const notes = await (await fetch('http://localhost:3000/notes')).json();
+    const prompts = await (await fetch('http://localhost:3000/prompts')).json();
+    setNotes(notes);
+    setPrompts(prompts);
+  };
 
-    this.getNotes = this.getNotes.bind(this);
-    this.addNotes = this.addNotes.bind(this);
-  }
+  useEffect(() => {
+    getNotes();
+  }, []);
 
-  componentDidMount() {
-    this.getNotes();
-  }
-
-  getNotes() {
-    fetch('http://localhost:3000/notes')
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => this.addNotes(res))
-      .catch((err) => console.log('Notes getNotes on notes ERROR: ', err));
-    fetch('http://localhost:3000/prompts')
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => this.addPrompts(res))
-      .catch((err) => console.log('Notes getNotes on prompts ERROR: ', err));
-  }
-
-  addNotes(notes) {
-    const allNotes = notes;
-    this.setState({ allNotes });
-  }
-
-  addPrompts(prompts) {
-    const allPrompts = prompts;
-    this.setState({ allPrompts });
-  }
-
-  render() {
-    const allNotes = this.state.allNotes;
-    const allPrompts = this.state.allPrompts;
+  // does not put notes in appropriate order from prompts, this is a DB issue
+  const noteMaker = () => {
     const notesArray = [];
-
-    if (allPrompts.length > 0 && allNotes.length > 0) {
-      for (let i = 0; i < allPrompts.length; i++) {
+    if (prompts.length > 0 && prompts.length > 0) {
+      for (let i = 0; i < prompts.length; i++) {
         notesArray.push(
           <Note
-            prompt={allPrompts[i].prompt}
-            promptNum={allPrompts[i].promptNum}
-            note={allNotes[i].note}
+            prompt={prompts[i].prompt}
+            promptNum={prompts[i].promptNum}
+            note={notes[i].note}
             key={i}
             id={i}
           />
         );
       }
     }
+    return notesArray;
+  };
 
-    return (
-      <>
-        <header>
-          <h1 id='notes-title'>Notes</h1>
-        </header>
-        <div id='note-box'>{notesArray}</div>
-        <div id='button-box'>
-          <button id='back-to-reader'>
-            <a href='/reader'>Back to Reader</a>
-          </button>
-        </div>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <header>
+        <h1 id='notes-title'>Notes</h1>
+      </header>
+      <div id='note-box'>{noteMaker()}</div>
+      <div id='button-box'>
+        <button id='back-to-reader'>
+          <a href='/reader'>Back to Reader</a>
+        </button>
+      </div>
+    </>
+  );
+};
 
 export default Notes;
