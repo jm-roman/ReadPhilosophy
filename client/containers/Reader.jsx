@@ -1,135 +1,84 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Top from '../components/Top';
 import Prompt from '../components/Prompt';
 import Text from '../components/Text';
 import Bottom from '../components/Bottom';
 
-class Reader extends Component {
-  constructor(props) {
-    super(props);
+const Reader = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentText, setCurrentText] = useState('');
+  const [currentOriginal, setCurrentOriginal] = useState('');
+  const [currentPrompt, setCurrentPrompt] = useState('');
+  const [lastPage, setLastPage] = useState(Infinity);
 
-    this.state = {
-      answered: false,
-      currentPage: 1,
-      currentText: '',
-      currentOriginal: '',
-      currentPrompt: '',
-      lastPage: Infinity,
-    };
+  const getPage = async () => {
+    const text = await (await fetch('http://localhost:3000/text')).json();
+    const prompts = await (await fetch('http://localhost:3000/prompts')).json();
+    setCurrentText(text[currentPage - 1].text);
+    setOriginal(text[currentPage - 1].original);
+    setLastPage(text.length);
+    setCurrentPrompt(prompts[currentPage - 1].prompt);
+  };
 
-    this.addText = this.addText.bind(this);
-    this.addPrompt = this.addPrompt.bind(this);
-    this.nextPage = this.nextPage.bind(this);
-    this.prevPage = this.prevPage.bind(this);
-  }
-
-  componentDidMount() {
-    this.getPage();
-  }
-
-  getPage() {
-    fetch('http://localhost:3000/text')
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => this.addText(res))
-      .catch((err) => console.log('Reader getPage on text ERROR: ', err));
-    fetch('http://localhost:3000/prompts')
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => this.addPrompt(res))
-      .catch((err) => console.log('Reader getPage on prompts ERROR: ', err));
-  }
-
-  addText(text) {
-    // adding at the correct index (which is current - 1)
-    const currentText = text[this.state.currentPage - 1].text;
-    const currentOriginal = text[this.state.currentPage - 1].original;
-    const lastPage = text.length;
-    this.setState({ currentText, currentOriginal, lastPage });
-  }
-
-  addPrompt(prompts) {
-    // adding at the correct index (which is current - 1)
-    const currentPrompt = prompts[this.state.currentPage - 1].prompt;
-    this.setState({ currentPrompt });
-  }
-
-  readOriginal() {
-    // stretch feature to switch to original language
-  }
-  nextPage() {
+  const nextPage = () => {
+    console.log('next page plz');
     // changing current page on click
     // check if answered or if there are further pages
-    if (this.state.currentPage < this.state.lastPage) {
-      const currentPage = this.state.currentPage + 1;
-      this.setState({ currentPage });
-      this.getPage();
-    } else if (this.currentPage >= this.state.lastPage) {
-      // this.goToNotes();
+    if (currentPage < lastPage) {
+      const currentPage = currentPage + 1;
+      setCurrentPage({ currentPage });
+      getPage();
     }
-  }
+  };
 
-  prevPage() {
-    // changing current page on click
-    console.log('prev page plz');
+  const prevPage = () => {
     if (this.state.currentPage > 1) {
-      const currentPage = this.state.currentPage - 1;
-      this.setState({ currentPage });
-      this.getPage();
-    } else if (this.state.currentPage <= 1) {
-      // <Link to></Link>;
+      const currentPage = currentPage - 1;
+      setCurrentPage({ currentPage });
+      getPage();
     }
-  }
+  };
 
-  saveNote(input) {
-    fetch('http://localhost:3000/notes', {
-      method: 'POST',
-      body: JSON.stringify(body),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {
-        console.log(data);
-      });
-  }
+  // saveNote(input) {
+  //   fetch('http://localhost:3000/notes', {
+  //     method: 'POST',
+  //     body: JSON.stringify(body),
+  //   })
+  //     .then((resp) => resp.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // }
 
-  render() {
-    const pageProps = {
-      answered: this.state.answered,
-      currentPage: this.state.currentPage,
-      currentText: this.state.currentText,
-      currentOriginal: this.state.currentOriginal,
-      currentPrompt: this.state.currentPrompt,
-      lastPage: this.state.lastPage,
-    };
+  useEffect(() => {
+    getPage();
+  }, []);
 
-    return (
-      <div>
-        <header>
-          <h1>
-            <a href='/'>Read Philosophy</a>
-          </h1>
-        </header>
-        <Top />
-        <div id='reader'>
-          <Prompt currentPrompt={pageProps.currentPrompt} />
-          <Text
-            currentText={pageProps.currentText}
-            currentPage={pageProps.currentPage}
-            currentOriginal={pageProps.currentOriginal}
-          />
-        </div>
-        <Bottom
-          nextPage={this.nextPage}
-          prevPage={this.prevPage}
-          currentPage={pageProps.currentPage}
-          lastPage={pageProps.lastPage}
+  return (
+    <div>
+      <header>
+        <h1>
+          <a href='/'>Read Philosophy</a>
+        </h1>
+      </header>
+      <Top />
+      <div id='reader'>
+        <Prompt currentPrompt={currentPrompt} />
+        <Text
+          currentText={currentText}
+          currentPage={currentPage}
+          currentOriginal={currentOriginal}
         />
       </div>
-    );
-  }
-}
+      <Bottom
+        nextPage={nextPage}
+        prevPage={prevPage}
+        currentPage={currentPage}
+        lastPage={lastPage}
+      />
+    </div>
+  );
+};
 
 export default Reader;
 

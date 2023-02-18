@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Prompt = (props) => {
-  // creat note function
+  // creat note save function
 
   return (
     <div id='prompt-box'>
