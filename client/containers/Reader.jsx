@@ -7,7 +7,6 @@ import Bottom from '../components/Bottom';
 const Reader = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentText, setCurrentText] = useState('');
-  const [currentOriginal, setCurrentOriginal] = useState('');
   const [currentPrompt, setCurrentPrompt] = useState('');
   const [lastPage, setLastPage] = useState(Infinity);
 
@@ -15,9 +14,9 @@ const Reader = () => {
     const text = await (await fetch('http://localhost:3000/text')).json();
     const prompts = await (await fetch('http://localhost:3000/prompts')).json();
     setCurrentText(text[currentPage - 1].text);
-    setOriginal(text[currentPage - 1].original);
     setLastPage(text.length);
     setCurrentPrompt(prompts[currentPage - 1].prompt);
+    console.log(currentPrompt);
   };
 
   const nextPage = () => {
@@ -25,8 +24,8 @@ const Reader = () => {
     // changing current page on click
     // check if answered or if there are further pages
     if (currentPage < lastPage) {
-      const currentPage = currentPage + 1;
-      setCurrentPage({ currentPage });
+      const tempPage = currentPage + 1;
+      setCurrentPage(tempPage);
       getPage();
     }
   };
@@ -52,7 +51,7 @@ const Reader = () => {
 
   useEffect(() => {
     getPage();
-  }, []);
+  });
 
   return (
     <div>
@@ -64,11 +63,7 @@ const Reader = () => {
       <Top />
       <div id='reader'>
         <Prompt currentPrompt={currentPrompt} />
-        <Text
-          currentText={currentText}
-          currentPage={currentPage}
-          currentOriginal={currentOriginal}
-        />
+        <Text currentText={currentText} currentPage={currentPage} />
       </div>
       <Bottom
         nextPage={nextPage}
