@@ -2,10 +2,7 @@ import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const Note = (props) => {
-  console.log(props);
-
   const deleteNote = (note) => {};
-
   return (
     <div id={'note-' + props.id} className='note'>
       <div className='note-number'>

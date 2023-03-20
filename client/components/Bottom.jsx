@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Bottom = (props) => {
-  console.log(props);
   return (
     <div id='bottom-box'>
       <div id='bottom'>
