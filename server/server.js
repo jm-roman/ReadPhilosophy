@@ -46,11 +46,11 @@ app.get('/notes', controllers.getNotes, (req, res) => {
 });
 
 app.post('/notes', controllers.createNote, (req, res) => {
-  res.status(200).json(res.locals.notes);
+  res.status(201).json(res.locals.notes);
 });
 
 app.delete('/notes', controllers.deleteNote, (req, res) => {
-  res.status(200).json(res.locals.notes);
+  res.status(204).json(res.locals.notes);
 });
 
 // LOGIN ROUTES

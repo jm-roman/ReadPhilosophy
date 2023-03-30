@@ -1,12 +1,13 @@
 import React from 'react';
 
 const Text = (props) => {
+  const { currentPage, currentText } = props;
   return (
     <div id='text-box'>
       <div id='para-num'>
-        <b>§{props.currentPage}.</b>
+        <b>§{currentPage}.</b>
       </div>
-      <div id='text'>{props.currentText}</div>
+      <div id='text'>{currentText}</div>
     </div>
   );
   // get text from groundwork json

@@ -1,11 +1,12 @@
 import React from 'react';
 
 const Prompt = (props) => {
-  // creat note function
+  // creat note save function
+  const { currentPrompt } = props;
 
   return (
     <div id='prompt-box'>
-      <div id='prompt'> {props.currentPrompt} </div>
+      <div id='prompt'> {currentPrompt} </div>
       <form id='note-form'>
         <input type='text' id='answer' name='answer' />
         <button type='button' id='submit' name='Save'>
