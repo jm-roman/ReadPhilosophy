@@ -1,26 +1,28 @@
 import React from 'react';
 
 const Bottom = (props) => {
+  const { currentPage, prevPage, lastPage, nextPage } = props;
+
   return (
     <div id='bottom-box'>
       <div id='bottom'>
-        {props.currentPage > 1 && (
-          <button id='prev' onClick={props.prevPage}>
+        {currentPage > 1 && (
+          <button id='prev' onClick={prevPage}>
             Previous
           </button>
         )}
-        {props.currentPage <= 1 && (
+        {currentPage <= 1 && (
           <button id='prev'>
             <a href='/'>Go Home</a>
           </button>
         )}
-        {props.currentPage < props.lastPage && (
-          <button id='next' onClick={props.nextPage}>
+        {currentPage < lastPage && (
+          <button id='next' onClick={nextPage}>
             Next
           </button>
         )}
-        {props.currentPage >= props.lastPage && (
-          <button id='next' onClick={props.nextPage}>
+        {currentPage >= lastPage && (
+          <button id='next' onClick={nextPage}>
             <a href='/notes'>See Notes</a>
           </button>
         )}
