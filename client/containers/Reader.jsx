@@ -3,6 +3,7 @@ import Top from '../components/Top';
 import Prompt from '../components/Prompt';
 import Text from '../components/Text';
 import Bottom from '../components/Bottom';
+import MultipleChoice from '../components/MultipleChoice';
 
 const Reader = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -62,7 +63,8 @@ const Reader = () => {
       </header>
       <Top />
       <div id='reader'>
-        <Prompt currentPrompt={currentPrompt} />
+        {/* <Prompt currentPrompt={currentPrompt} /> */}
+        <MultipleChoice currentPrompt={currentPrompt} />
         <Text currentText={currentText} currentPage={currentPage} />
       </div>
       <Bottom
