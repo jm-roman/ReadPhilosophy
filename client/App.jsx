@@ -2,6 +2,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import Menu from './pages/Menu';
 import Reader from './containers/Reader';
 import Notes from './containers/Notes';
 
@@ -13,6 +14,7 @@ const App = () => {
       <Route path='/' element={<Home />} />
       <Route path='/reader' element={<Reader />} />
       <Route path='/notes' element={<Notes />} />
+      <Route path='/menu' element={<Menu />} />
     </Routes>
   );
 };

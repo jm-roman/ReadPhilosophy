@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Top from '../components/Top';
-import Prompt from '../components/Prompt';
+// import Prompt from '../components/Prompt';
 import Text from '../components/Text';
 import Bottom from '../components/Bottom';
 import MultipleChoice from '../components/MultipleChoice';
