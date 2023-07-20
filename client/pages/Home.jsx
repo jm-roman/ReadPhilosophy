@@ -1,13 +1,15 @@
 import React from 'react';
-import RPLogo from '../assets/RP-logo.png';
+import RPLogo from '../assets/RP logo.jpg';
 
 const Home = () => {
   return (
     <>
-      <header>
-        <h1 id='home-title'>Read Philosophy</h1>
+       <header>
+        <h1 id='home-title'>Read Philosophy</h1>  
       </header>
-      <img src={RPLogo} />
+      <div className="logo-container">
+        <img src={RPLogo} className="logo-image" alt="Logo" width='50%' />
+      </div>
       <div id='home-box'>
         <div id='home-text'>A guided introduction to reading philosophy.</div>
         <button id='start-learning'>

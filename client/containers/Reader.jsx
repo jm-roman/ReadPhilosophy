@@ -22,7 +22,7 @@ const Reader = () => {
 
   const nextPage = () => {
     console.log('next page plz');
-    // changing current page on click
+    // changing current page on click 
     // check if answered or if there are further pages
     if (currentPage < lastPage) {
       const tempPage = currentPage + 1;

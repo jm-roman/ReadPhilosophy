@@ -7,8 +7,7 @@ import {
   Radio,
 } from '@mui/material';
 
-const MultipleChoice = (props) => {
-  const { currentPrompt } = props;
+const MultipleChoice = ({currentPrompt}) => {
   const options = [
     'Biology, Anthropology, and Sociology',
     'Astronomy, Chemistry, and Geology',

@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 @import 'variables.scss';
 
+.logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.logo-image {
+  max-width: 100%;
+  height: auto;
+}
+
 #home-title {
   font-size: 100px;
 }
